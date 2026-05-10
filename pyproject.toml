@@ -1,0 +1,37 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "matplotlib-stubs"
+version = "0.1.0"
+description = "Type stubs for matplotlib, copied from microsoft/python-type-stubs."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+authors = [{ name = "Microsoft Corporation and python-type-stubs contributors" }]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Typing :: Stubs Only",
+]
+
+[project.urls]
+Source = "https://github.com/microsoft/python-type-stubs/tree/main/stubs/matplotlib"
+
+[dependency-groups]
+dev = ["hatchling"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/LICENSE",
+    "/README.md",
+    "/pyproject.toml",
+    "/matplotlib-stubs",
+]
+
+[tool.hatch.build.targets.wheel]
+only-include = ["matplotlib-stubs"]
