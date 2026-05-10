@@ -63,6 +63,10 @@ You generally do not need `mypy_path`, `stubPath`, or custom search paths unless
 you are deliberately keeping these stubs outside the environment that runs your
 type checker.
 
+## See Also
+
+- [`sklearn-stubs`](https://github.com/juliancoffeelab/scikit-learn-stubs)
+
 ## Notes
 
 Microsoft's upstream repository notes that matplotlib is `py.typed` starting at
