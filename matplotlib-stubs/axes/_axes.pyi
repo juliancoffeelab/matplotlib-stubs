@@ -53,15 +53,15 @@ class Axes(_AxesBase):
     def set_title(
         self,
         label: str,
-        fontdict: dict = ...,
+        fontdict: dict[str, object] = ...,
         loc: Literal["center", "left", "right"] = ...,
         pad: float = ...,
         *,
         y: float = ...,
-        **kwargs,
+        **kwargs: object,
     ) -> Text: ...
     def get_legend_handles_labels(self, legend_handler_map=...) -> tuple[list, list]: ...
-    def legend(self, *args, **kwargs) -> Legend: ...
+    def legend(self, *args: object, **kwargs: object) -> Legend: ...
     def inset_axes(self, bounds: Sequence[float], *, transform: Transform = ..., zorder: float = ..., **kwargs) -> Axes: ...
     def indicate_inset(
         self,
@@ -73,7 +73,7 @@ class Axes(_AxesBase):
         edgecolor: Color = ...,
         alpha: float = ...,
         zorder: float = ...,
-        **kwargs,
+        **kwargs: object,
     ) -> Rectangle: ...
     def indicate_inset_zoom(self, inset_ax: Axes, **kwargs) -> Rectangle: ...
     def secondary_xaxis(
@@ -92,7 +92,7 @@ class Axes(_AxesBase):
         textcoords: str | Artist | Transform | Callable = ...,
         arrowprops: dict = ...,
         annotation_clip: bool | None = ...,
-        **kwargs,
+        **kwargs: object,
     ) -> Annotation: ...
     def axhline(self, y: float = 0, xmin: float = 0, xmax: float = 1, **kwargs) -> Line2D: ...
     def axvline(self, x: float = ..., ymin: float = ..., ymax: float = ..., **kwargs) -> Line2D: ...
@@ -290,21 +290,21 @@ class Axes(_AxesBase):
     ) -> dict[str, list[Line2D]]: ...
     def scatter(
         self,
-        x: float | ArrayLike,
-        y: float | ArrayLike,
-        s: float | ArrayLike = ...,
-        c: ArrayLike | list[Color] | Color = ...,
+        x: object,
+        y: object,
+        s: object = ...,
+        c: object = ...,
         marker: MarkerStyle = ...,
         cmap: str | Colormap = ...,
         norm: Normalize | None = None,
         vmin: float | None = None,
         vmax: float | None = None,
         alpha: float | None = None,
-        linewidths: float | ArrayLike = ...,
+        linewidths: object = ...,
         *,
         edgecolors: Color = ...,
         plotnonfinite: bool = False,
-        **kwargs,
+        **kwargs: object,
     ) -> PathCollection: ...
     def hexbin(
         self,
@@ -406,8 +406,8 @@ class Axes(_AxesBase):
         vmax: float | None = None,
         **kwargs,
     ) -> tuple[AxesImage, PcolorImage, QuadMesh]: ...
-    def contour(self, *args, **kwargs) -> QuadContourSet: ...
-    def contourf(self, *args, **kwargs) -> QuadContourSet: ...
+    def contour(self, *args: object, **kwargs: object) -> QuadContourSet: ...
+    def contourf(self, *args: object, **kwargs: object) -> QuadContourSet: ...
     def clabel(self, CS, levels: ArrayLike = ..., **kwargs): ...
     @overload
     def hist(

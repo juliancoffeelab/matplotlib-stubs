@@ -89,7 +89,12 @@ class PathCollection(_CollectionWithSizes):
     def set_paths(self, paths: Sequence[Path]) -> None: ...
     def get_paths(self): ...
     def legend_elements(
-        self, prop: Literal["colors", "sizes"] = ..., num=..., fmt=..., func: Callable = ..., **kwargs
+        self,
+        prop: Literal["colors", "sizes"] = ...,
+        num: object = ...,
+        fmt: object = ...,
+        func: Callable[..., object] = ...,
+        **kwargs: object,
     ) -> tuple[list[Line2D], list[str]]: ...
 
 class PolyCollection(_CollectionWithSizes):

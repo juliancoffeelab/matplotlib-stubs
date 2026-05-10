@@ -42,7 +42,7 @@ def findobj(o=..., match=..., include_self: bool = ...) -> list: ...
 def switch_backend(newbackend: str) -> None: ...
 def new_figure_manager(*args, **kwargs) -> FigureManagerBase: ...
 def draw_if_interactive(*args, **kwargs): ...
-def show(*args, **kwargs): ...
+def show(*args: object, **kwargs: object) -> None: ...
 def isinteractive() -> bool: ...
 
 class _IoffContext:
@@ -92,7 +92,7 @@ def disconnect(cid: int): ...
 def close(fig: None | int | str | Figure = ...): ...
 def clf() -> None: ...
 def draw() -> None: ...
-def savefig(*args, **kwargs) -> None: ...
+def savefig(*args: object, **kwargs: object) -> None: ...
 def figlegend(*args, **kwargs) -> Legend: ...
 def axes(arg: None | tuple = ..., **kwargs) -> Axes: ...
 def delaxes(ax: Axes = ...) -> None: ...
@@ -107,9 +107,9 @@ def subplots(
     squeeze: Literal[False],
     sharex: bool | Literal["none", "all", "row", "col"] = ...,
     sharey: bool | Literal["none", "all", "row", "col"] = ...,
-    subplot_kw: dict = ...,
-    gridspec_kw: dict = ...,
-    **fig_kw,
+    subplot_kw: dict[str, object] = ...,
+    gridspec_kw: dict[str, object] = ...,
+    **fig_kw: object,
 ) -> tuple[Figure, np.ndarray]: ...
 @overload
 def subplots(
@@ -119,9 +119,9 @@ def subplots(
     sharex: bool | Literal["none", "all", "row", "col"] = ...,
     sharey: bool | Literal["none", "all", "row", "col"] = ...,
     squeeze: Literal[True] = ...,
-    subplot_kw: dict = ...,
-    gridspec_kw: dict = ...,
-    **fig_kw,
+    subplot_kw: dict[str, object] = ...,
+    gridspec_kw: dict[str, object] = ...,
+    **fig_kw: object,
 ) -> tuple[Figure, Axes]: ...
 
 ##
@@ -134,9 +134,9 @@ def subplots(
     sharex: bool | Literal["none", "all", "row", "col"] = ...,
     sharey: bool | Literal["none", "all", "row", "col"] = ...,
     squeeze: Literal[True] = ...,
-    subplot_kw: dict = ...,
-    gridspec_kw: dict = ...,
-    **fig_kw,
+    subplot_kw: dict[str, object] = ...,
+    gridspec_kw: dict[str, object] = ...,
+    **fig_kw: object,
 ) -> tuple[Figure, np.ndarray]: ...
 @overload
 def subplots(
@@ -146,9 +146,9 @@ def subplots(
     sharex: bool | Literal["none", "all", "row", "col"] = ...,
     sharey: bool | Literal["none", "all", "row", "col"] = ...,
     squeeze: Literal[True] = ...,
-    subplot_kw: dict = ...,
-    gridspec_kw: dict = ...,
-    **fig_kw,
+    subplot_kw: dict[str, object] = ...,
+    gridspec_kw: dict[str, object] = ...,
+    **fig_kw: object,
 ) -> tuple[Figure, np.ndarray]: ...
 @overload
 def subplots(
@@ -158,9 +158,9 @@ def subplots(
     sharex: bool | Literal["none", "all", "row", "col"] = ...,
     sharey: bool | Literal["none", "all", "row", "col"] = ...,
     squeeze: Literal[True] = ...,
-    subplot_kw: dict = ...,
-    gridspec_kw: dict = ...,
-    **fig_kw,
+    subplot_kw: dict[str, object] = ...,
+    gridspec_kw: dict[str, object] = ...,
+    **fig_kw: object,
 ) -> tuple[Figure, np.ndarray]: ...
 @overload
 def subplots(
@@ -169,9 +169,9 @@ def subplots(
     sharex: bool | Literal["none", "all", "row", "col"] = ...,
     sharey: bool | Literal["none", "all", "row", "col"] = ...,
     squeeze: Literal[True] = ...,
-    subplot_kw: dict = ...,
-    gridspec_kw: dict = ...,
-    **fig_kw,
+    subplot_kw: dict[str, object] = ...,
+    gridspec_kw: dict[str, object] = ...,
+    **fig_kw: object,
 ) -> tuple[Figure, np.ndarray]: ...
 @overload
 def subplots(
@@ -180,9 +180,9 @@ def subplots(
     sharex: bool | Literal["none", "all", "row", "col"] = ...,
     sharey: bool | Literal["none", "all", "row", "col"] = ...,
     squeeze: Literal[True] = ...,
-    subplot_kw: dict = ...,
-    gridspec_kw: dict = ...,
-    **fig_kw,
+    subplot_kw: dict[str, object] = ...,
+    gridspec_kw: dict[str, object] = ...,
+    **fig_kw: object,
 ) -> tuple[Figure, np.ndarray]: ...
 @overload
 def subplots(
@@ -190,9 +190,9 @@ def subplots(
     sharex: bool | Literal["none", "all", "row", "col"] = ...,
     sharey: bool | Literal["none", "all", "row", "col"] = ...,
     squeeze: Literal[True] = ...,
-    subplot_kw: dict = ...,
-    gridspec_kw: dict = ...,
-    **fig_kw,
+    subplot_kw: dict[str, object] = ...,
+    gridspec_kw: dict[str, object] = ...,
+    **fig_kw: object,
 ) -> tuple[Figure, Axes]: ...
 @overload
 def subplots(
@@ -202,9 +202,9 @@ def subplots(
     sharex: bool | Literal["none", "all", "row", "col"] = ...,
     sharey: bool | Literal["none", "all", "row", "col"] = ...,
     squeeze: bool = ...,
-    subplot_kw: dict = ...,
-    gridspec_kw: dict = ...,
-    **fig_kw,
+    subplot_kw: dict[str, object] = ...,
+    gridspec_kw: dict[str, object] = ...,
+    **fig_kw: object,
 ) -> tuple[Figure, np.ndarray]: ...
 def subplot_mosaic(
     mosaic: list | str,
@@ -666,22 +666,22 @@ def psd(
 def quiver(*args, data=..., **kwargs) -> Quiver: ...
 def quiverkey(Q: Quiver, X: float, Y: float, U: float, label: str, **kwargs): ...
 def scatter(
-    x: float | ArrayLike,
-    y: float | ArrayLike,
-    s: float | ArrayLike = ...,
-    c: ArrayLike | list[Color] | Color = ...,
+    x: object,
+    y: object,
+    s: object = ...,
+    c: object = ...,
     marker: MarkerStyle = ...,
     cmap: str | Colormap = ...,
     norm: Normalize = ...,
     vmin: float = ...,
     vmax: float = ...,
     alpha: float = ...,
-    linewidths: float | ArrayLike = ...,
+    linewidths: object = ...,
     *,
     edgecolors: Color = ...,
     plotnonfinite: bool = ...,
-    data=...,
-    **kwargs,
+    data: object = ...,
+    **kwargs: object,
 ) -> PathCollection: ...
 def semilogx(*args, **kwargs) -> list: ...
 def semilogy(*args, **kwargs) -> list: ...
