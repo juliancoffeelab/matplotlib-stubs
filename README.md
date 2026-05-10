@@ -70,6 +70,16 @@ matplotlib 3.8.0. These extracted stubs are therefore mainly useful when you
 want that exact upstream stub set or need typing support for older environments.
 This package is marked as a partial stub package.
 
+## Divergence From Upstream
+
+The `upstream` branch tracks the copied Microsoft stub set. The `main` branch
+may include local fixes on top of that import.
+
+Current local divergence:
+
+- [`#1`](https://github.com/juliancoffeelab/matplotlib-stubs/pull/1): accept
+  path-like values in matplotlib stubs.
+
 ## License and attribution
 
 The copied stubs are licensed under the MIT License. Copyright belongs to
