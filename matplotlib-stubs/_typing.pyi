@@ -1,4 +1,5 @@
 import io
+import os
 import typing_extensions
 from decimal import Decimal as Decimal
 
@@ -8,7 +9,7 @@ from numpy.typing import ArrayLike as ArrayLike
 PythonScalar: typing_extensions.TypeAlias = str | int | float | bool
 
 FileLike = io.IOBase
-PathLike = str
+PathLike: typing_extensions.TypeAlias = str | os.PathLike[str]
 
 PandasScalar: typing_extensions.TypeAlias = pd.Period | pd.Timestamp | pd.Timedelta | pd.Interval
 Scalar: typing_extensions.TypeAlias = PythonScalar | PandasScalar
