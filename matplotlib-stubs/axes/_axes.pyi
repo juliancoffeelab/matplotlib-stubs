@@ -130,7 +130,14 @@ class Axes(_AxesBase):
         linestyles: str | tuple | list = ...,
         **kwargs,
     ) -> list[EventCollection]: ...
-    def plot(self, *args, scalex=..., scaley=..., data=..., **kwargs) -> list[Line2D]: ...
+    def plot(
+        self,
+        *args: object,
+        scalex: bool = ...,
+        scaley: bool = ...,
+        data: object = ...,
+        **kwargs: object,
+    ) -> list[Line2D]: ...
     def plot_date(
         self,
         x: ArrayLike,
