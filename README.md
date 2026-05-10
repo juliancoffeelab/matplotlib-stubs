@@ -63,10 +63,6 @@ You generally do not need `mypy_path`, `stubPath`, or custom search paths unless
 you are deliberately keeping these stubs outside the environment that runs your
 type checker.
 
-## See Also
-
-- [`sklearn-stubs`](https://github.com/juliancoffeelab/scikit-learn-stubs)
-
 ## Notes
 
 Microsoft's upstream repository notes that matplotlib is `py.typed` starting at
@@ -76,13 +72,11 @@ This package is marked as a partial stub package.
 
 ## Divergence From Upstream
 
-The `upstream` branch tracks the copied Microsoft stub set. The `main` branch
-may include local fixes on top of that import.
+The `upstream` branch tracks the copied Microsoft stub set exactly as imported.
+The `main` branch contains all local changes on top of that import.
 
-Current local divergence:
-
-- [`#1`](https://github.com/juliancoffeelab/matplotlib-stubs/pull/1): accept
-  path-like values in matplotlib stubs.
+The full divergence from `upstream` is tracked in
+[`#1`](https://github.com/juliancoffeelab/matplotlib-stubs/pull/1).
 
 ## License and attribution
 
@@ -93,3 +87,7 @@ license text is included in [`LICENSE`](LICENSE).
 All credit for the copied stub files goes to Microsoft and the contributors to
 `microsoft/python-type-stubs`. This repository is an extracted copy of the
 `matplotlib` stubs for convenience.
+
+## See Also
+
+- [`sklearn-stubs`](https://github.com/juliancoffeelab/scikit-learn-stubs)
