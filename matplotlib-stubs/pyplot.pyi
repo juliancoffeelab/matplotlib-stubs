@@ -666,22 +666,22 @@ def psd(
 def quiver(*args, data=..., **kwargs) -> Quiver: ...
 def quiverkey(Q: Quiver, X: float, Y: float, U: float, label: str, **kwargs): ...
 def scatter(
-    x: object,
-    y: object,
-    s: object = ...,
-    c: object = ...,
+    x: float | ArrayLike,
+    y: float | ArrayLike,
+    s: float | ArrayLike = ...,
+    c: ArrayLike | list[Color] | Color = ...,
     marker: MarkerStyle = ...,
     cmap: str | Colormap = ...,
     norm: Normalize = ...,
     vmin: float = ...,
     vmax: float = ...,
     alpha: float = ...,
-    linewidths: object = ...,
+    linewidths: float | ArrayLike = ...,
     *,
     edgecolors: Color = ...,
     plotnonfinite: bool = ...,
-    data: object = ...,
-    **kwargs: object,
+    data=...,
+    **kwargs,
 ) -> PathCollection: ...
 def semilogx(*args, **kwargs) -> list: ...
 def semilogy(*args, **kwargs) -> list: ...

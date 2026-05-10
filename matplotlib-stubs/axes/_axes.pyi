@@ -290,21 +290,21 @@ class Axes(_AxesBase):
     ) -> dict[str, list[Line2D]]: ...
     def scatter(
         self,
-        x: object,
-        y: object,
-        s: object = ...,
-        c: object = ...,
+        x: float | ArrayLike,
+        y: float | ArrayLike,
+        s: float | ArrayLike = ...,
+        c: ArrayLike | list[Color] | Color = ...,
         marker: MarkerStyle = ...,
         cmap: str | Colormap = ...,
         norm: Normalize | None = None,
         vmin: float | None = None,
         vmax: float | None = None,
         alpha: float | None = None,
-        linewidths: object = ...,
+        linewidths: float | ArrayLike = ...,
         *,
         edgecolors: Color = ...,
         plotnonfinite: bool = False,
-        **kwargs: object,
+        **kwargs,
     ) -> PathCollection: ...
     def hexbin(
         self,
