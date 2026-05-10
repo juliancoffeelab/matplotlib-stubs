@@ -304,7 +304,7 @@ class Axes(_AxesBase):
         *,
         edgecolors: Color = ...,
         plotnonfinite: bool = False,
-        **kwargs,
+        **kwargs: object,
     ) -> PathCollection: ...
     def hexbin(
         self,
