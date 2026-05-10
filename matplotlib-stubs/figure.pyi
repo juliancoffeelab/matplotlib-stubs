@@ -1,3 +1,4 @@
+from collections.abc import Sequence
 from io import BufferedWriter, BytesIO
 from typing import Callable, Literal, overload
 
@@ -8,6 +9,7 @@ from ._typing import *
 from .artist import Artist, _finalize_rasterization, allow_rasterization
 from .axes import Axes
 from .backend_bases import FigureCanvasBase, MouseButton, MouseEvent, RendererBase
+from .cm import ScalarMappable
 from .colorbar import Colorbar
 from .colors import Colormap, Normalize
 from .gridspec import GridSpec, SubplotSpec
@@ -98,8 +100,8 @@ class FigureBase(Artist):
         squeeze: Literal[False],
         sharex: bool | Literal["none", "all", "row", "col"] = ...,
         sharey: bool | Literal["none", "all", "row", "col"] = ...,
-        subplot_kw: dict = ...,
-        gridspec_kw: dict = ...,
+        subplot_kw: dict[str, object] = ...,
+        gridspec_kw: dict[str, object] = ...,
     ) -> list[Axes]: ...
     @overload
     def subplots(
@@ -110,8 +112,8 @@ class FigureBase(Artist):
         squeeze: Literal[False],
         sharex: bool | Literal["none", "all", "row", "col"] = ...,
         sharey: bool | Literal["none", "all", "row", "col"] = ...,
-        subplot_kw: dict = ...,
-        gridspec_kw: dict = ...,
+        subplot_kw: dict[str, object] = ...,
+        gridspec_kw: dict[str, object] = ...,
     ) -> list[list[Axes]]: ...
     @overload
     def subplots(
@@ -122,8 +124,8 @@ class FigureBase(Artist):
         squeeze: Literal[True] = ...,
         sharex: bool | Literal["none", "all", "row", "col"] = ...,
         sharey: bool | Literal["none", "all", "row", "col"] = ...,
-        subplot_kw: dict = ...,
-        gridspec_kw: dict = ...,
+        subplot_kw: dict[str, object] = ...,
+        gridspec_kw: dict[str, object] = ...,
     ) -> Axes: ...
     @overload
     def subplots(
@@ -140,9 +142,16 @@ class FigureBase(Artist):
     def delaxes(self, ax: Axes) -> None: ...
     def clear(self, keep_observers: bool = False) -> None: ...
     def clf(self, keep_observers: bool = False) -> None: ...
-    def legend(self, *args, **kwargs) -> Legend: ...
+    def legend(self, *args: object, **kwargs: object) -> Legend: ...
     def text(self, x: float, y: float, s: str, fontdict: dict = ..., **kwargs) -> Text: ...
-    def colorbar(self, mappable, cax: Axes = ..., ax=..., use_gridspec: bool = ..., **kwargs) -> Colorbar: ...
+    def colorbar(
+        self,
+        mappable: ScalarMappable,
+        cax: Axes | None = ...,
+        ax: Axes | Sequence[Axes] | None = ...,
+        use_gridspec: bool = ...,
+        **kwargs: object,
+    ) -> Colorbar: ...
     def subplots_adjust(
         self,
         left: float = ...,
@@ -254,7 +263,7 @@ class Figure(FigureBase):
     def __setstate__(self, state) -> None: ...
     def add_axobserver(self, func: Callable) -> None: ...
     def savefig(
-        self, fname: str | PathLike | FileLike | BytesIO | BufferedWriter, *, transparent: bool = ..., **kwargs
+        self, fname: str | PathLike | FileLike | BytesIO | BufferedWriter, *, transparent: bool = ..., **kwargs: object
     ) -> None: ...
     def ginput(
         self,

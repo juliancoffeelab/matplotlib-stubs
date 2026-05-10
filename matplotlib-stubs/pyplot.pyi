@@ -15,6 +15,7 @@ from ._typing import *
 from .artist import Artist
 from .axes import Axes as Axes
 from .backend_bases import FigureCanvasBase, FigureManagerBase, MouseButton, _Backend
+from .cm import ScalarMappable
 from .collections import BrokenBarHCollection, Collection, LineCollection, PathCollection, PolyCollection, QuadMesh
 from .colors import Colormap, Normalize
 from .container import BarContainer, ErrorbarContainer, StemContainer
@@ -42,7 +43,7 @@ def findobj(o=..., match=..., include_self: bool = ...) -> list: ...
 def switch_backend(newbackend: str) -> None: ...
 def new_figure_manager(*args, **kwargs) -> FigureManagerBase: ...
 def draw_if_interactive(*args, **kwargs): ...
-def show(*args, **kwargs): ...
+def show(*args: object, **kwargs: object) -> None: ...
 def isinteractive() -> bool: ...
 
 class _IoffContext:
@@ -92,7 +93,7 @@ def disconnect(cid: int): ...
 def close(fig: None | int | str | Figure = ...): ...
 def clf() -> None: ...
 def draw() -> None: ...
-def savefig(*args, **kwargs) -> None: ...
+def savefig(*args: object, **kwargs: object) -> None: ...
 def figlegend(*args, **kwargs) -> Legend: ...
 def axes(arg: None | tuple = ..., **kwargs) -> Axes: ...
 def delaxes(ax: Axes = ...) -> None: ...
@@ -107,9 +108,9 @@ def subplots(
     squeeze: Literal[False],
     sharex: bool | Literal["none", "all", "row", "col"] = ...,
     sharey: bool | Literal["none", "all", "row", "col"] = ...,
-    subplot_kw: dict = ...,
-    gridspec_kw: dict = ...,
-    **fig_kw,
+    subplot_kw: dict[str, object] = ...,
+    gridspec_kw: dict[str, object] = ...,
+    **fig_kw: object,
 ) -> tuple[Figure, np.ndarray]: ...
 @overload
 def subplots(
@@ -119,9 +120,9 @@ def subplots(
     sharex: bool | Literal["none", "all", "row", "col"] = ...,
     sharey: bool | Literal["none", "all", "row", "col"] = ...,
     squeeze: Literal[True] = ...,
-    subplot_kw: dict = ...,
-    gridspec_kw: dict = ...,
-    **fig_kw,
+    subplot_kw: dict[str, object] = ...,
+    gridspec_kw: dict[str, object] = ...,
+    **fig_kw: object,
 ) -> tuple[Figure, Axes]: ...
 
 ##
@@ -134,9 +135,9 @@ def subplots(
     sharex: bool | Literal["none", "all", "row", "col"] = ...,
     sharey: bool | Literal["none", "all", "row", "col"] = ...,
     squeeze: Literal[True] = ...,
-    subplot_kw: dict = ...,
-    gridspec_kw: dict = ...,
-    **fig_kw,
+    subplot_kw: dict[str, object] = ...,
+    gridspec_kw: dict[str, object] = ...,
+    **fig_kw: object,
 ) -> tuple[Figure, np.ndarray]: ...
 @overload
 def subplots(
@@ -146,9 +147,9 @@ def subplots(
     sharex: bool | Literal["none", "all", "row", "col"] = ...,
     sharey: bool | Literal["none", "all", "row", "col"] = ...,
     squeeze: Literal[True] = ...,
-    subplot_kw: dict = ...,
-    gridspec_kw: dict = ...,
-    **fig_kw,
+    subplot_kw: dict[str, object] = ...,
+    gridspec_kw: dict[str, object] = ...,
+    **fig_kw: object,
 ) -> tuple[Figure, np.ndarray]: ...
 @overload
 def subplots(
@@ -158,9 +159,9 @@ def subplots(
     sharex: bool | Literal["none", "all", "row", "col"] = ...,
     sharey: bool | Literal["none", "all", "row", "col"] = ...,
     squeeze: Literal[True] = ...,
-    subplot_kw: dict = ...,
-    gridspec_kw: dict = ...,
-    **fig_kw,
+    subplot_kw: dict[str, object] = ...,
+    gridspec_kw: dict[str, object] = ...,
+    **fig_kw: object,
 ) -> tuple[Figure, np.ndarray]: ...
 @overload
 def subplots(
@@ -169,9 +170,9 @@ def subplots(
     sharex: bool | Literal["none", "all", "row", "col"] = ...,
     sharey: bool | Literal["none", "all", "row", "col"] = ...,
     squeeze: Literal[True] = ...,
-    subplot_kw: dict = ...,
-    gridspec_kw: dict = ...,
-    **fig_kw,
+    subplot_kw: dict[str, object] = ...,
+    gridspec_kw: dict[str, object] = ...,
+    **fig_kw: object,
 ) -> tuple[Figure, np.ndarray]: ...
 @overload
 def subplots(
@@ -180,9 +181,9 @@ def subplots(
     sharex: bool | Literal["none", "all", "row", "col"] = ...,
     sharey: bool | Literal["none", "all", "row", "col"] = ...,
     squeeze: Literal[True] = ...,
-    subplot_kw: dict = ...,
-    gridspec_kw: dict = ...,
-    **fig_kw,
+    subplot_kw: dict[str, object] = ...,
+    gridspec_kw: dict[str, object] = ...,
+    **fig_kw: object,
 ) -> tuple[Figure, np.ndarray]: ...
 @overload
 def subplots(
@@ -190,9 +191,9 @@ def subplots(
     sharex: bool | Literal["none", "all", "row", "col"] = ...,
     sharey: bool | Literal["none", "all", "row", "col"] = ...,
     squeeze: Literal[True] = ...,
-    subplot_kw: dict = ...,
-    gridspec_kw: dict = ...,
-    **fig_kw,
+    subplot_kw: dict[str, object] = ...,
+    gridspec_kw: dict[str, object] = ...,
+    **fig_kw: object,
 ) -> tuple[Figure, Axes]: ...
 @overload
 def subplots(
@@ -202,9 +203,9 @@ def subplots(
     sharex: bool | Literal["none", "all", "row", "col"] = ...,
     sharey: bool | Literal["none", "all", "row", "col"] = ...,
     squeeze: bool = ...,
-    subplot_kw: dict = ...,
-    gridspec_kw: dict = ...,
-    **fig_kw,
+    subplot_kw: dict[str, object] = ...,
+    gridspec_kw: dict[str, object] = ...,
+    **fig_kw: object,
 ) -> tuple[Figure, np.ndarray]: ...
 def subplot_mosaic(
     mosaic: list | str,
@@ -234,7 +235,12 @@ def thetagrids(
     angles: Sequence[float] = ..., labels: Sequence[str] | None = ..., fmt: str | None = ..., **kwargs
 ) -> tuple[list[Line2D], list[Text]]: ...
 def get_plot_commands() -> list: ...
-def colorbar(mappable=..., cax: Axes = ..., ax: Axes = ..., **kwargs): ...
+def colorbar(
+    mappable: ScalarMappable | None = ...,
+    cax: Axes | None = ...,
+    ax: Axes | Sequence[Axes] | None = ...,
+    **kwargs: object,
+) -> Colorbar: ...
 def clim(vmin: float | None = ..., vmax: float | None = ...): ...
 def set_cmap(cmap: Colormap | str): ...
 def imread(fname: str | FileLike, format: str = ...) -> np.ndarray: ...
@@ -635,7 +641,7 @@ def pie(
     normalize: bool = ...,
     data=...,
 ): ...
-def plot(*args, scalex=..., scaley=..., data=..., **kwargs) -> list: ...
+def plot(*args: object, scalex: bool = ..., scaley: bool = ..., data: object = ..., **kwargs: object) -> list[Line2D]: ...
 def plot_date(
     x: ArrayLike,
     y: ArrayLike,
@@ -681,7 +687,7 @@ def scatter(
     edgecolors: Color = ...,
     plotnonfinite: bool = ...,
     data=...,
-    **kwargs,
+    **kwargs: object,
 ) -> PathCollection: ...
 def semilogx(*args, **kwargs) -> list: ...
 def semilogy(*args, **kwargs) -> list: ...
